@@ -9,10 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public class AuthController {
 
-	@GetMapping({"/index", "","/main"})
+	@GetMapping({"/login"})
 	public String index(Model model) {
 		model.addAttribute("title", "Text");
 		model.addAttribute("header", "Text");
-		return "index";
+		return "login";
+	}
+	
+	@GetMapping("/succes")
+	public String goIndex(Model model) {
+		
+		return "redirect:/app/index";
 	}
 }
