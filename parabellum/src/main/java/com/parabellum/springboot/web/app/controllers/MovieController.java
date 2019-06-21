@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller()
 @RequestMapping("/app")
-public class IndexController {
+public class MovieController {
 	
 	@Value("${texts.indexcontroller.index.title}")
 	private String indexTitle;

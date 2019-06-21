@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>12</java.version>
+		<start-class>com.parabelum.springboot.web.app.ParabellumApplication</start-class>
 	</properties>
 
 	<dependencies>
