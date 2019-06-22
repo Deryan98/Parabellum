@@ -1,0 +1,25 @@
+.table td, .table th {
+}
+
+:root {
+  height: 100%;
+}
+
+.form-control-sm {
+  text-align: center;
+}
+
+.navbar.navbar-light.text-center {
+  width: 100%;
+}
+
+.table.table-striped {
+}
+
+.row {
+}
+
+.table-responsive {
+  width: 100%;
+}
+
