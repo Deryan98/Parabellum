@@ -18,7 +18,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	@Transactional(readOnly = true)
 	public List<Usuario> findAll() {
 		
-		return usuarioDao.findAll();
+		return (List<Usuario>) usuarioDao.findAll();
 		
 	}
 	
@@ -32,14 +32,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	@Transactional(readOnly = true)
 	public Usuario findOne(Long id) {
 		
-		return usuarioDao.findOne(id);
+		return usuarioDao.findById(id).orElse(null);
 		
 	}
 	
 	@Transactional
 	public void delete(Long id) {
 		
-		usuarioDao.delete(id);
+		usuarioDao.deleteById(id);
 		
 	}
 
