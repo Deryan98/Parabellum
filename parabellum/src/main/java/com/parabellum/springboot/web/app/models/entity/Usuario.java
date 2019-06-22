@@ -42,6 +42,7 @@ public class Usuario implements Serializable {
 	@Column(unique = true)
 	private String email;
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "create_at")
@@ -52,7 +53,8 @@ public class Usuario implements Serializable {
 		createAt = new Date();
 		estado = true;
 	}
-
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "fecha_nacimiento")
