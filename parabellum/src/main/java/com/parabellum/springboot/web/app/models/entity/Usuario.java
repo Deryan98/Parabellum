@@ -1,7 +1,6 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,9 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,22 +24,114 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_usuario")
+	@Column(name = "id_usuario")
 	private Long idUsuario;
 
+	@NotEmpty
 	private String nombre;
 
+	@NotEmpty
 	private String apellido;
 
+	@NotEmpty
+	@Column(unique = true)
 	private String usuario;
 
+	@NotEmpty
+	@Email
+	@Column(unique = true)
 	private String email;
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "create_at")
+	private Date createAt;
+
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
+		estado = true;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "fecha_nacimiento")
+	private Date fechaNacimiento;
+
+	@NotEmpty
+	private String contrasenia;
+
+	@NotEmpty
+	private String direccion;
+
+	@NotNull
+	private double saldo;
+
+	@NotNull
+	private int edad;
+
+	@NotNull
+	private boolean estado;
 	
 	/*
+	 * Metodos accesores
+	 */
 
-	private String contraseña;
-	
-	*/
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contraseña) {
+		this.contrasenia = contraseña;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -89,20 +184,21 @@ public class Usuario implements Serializable {
 	 * fecha
 	 */
 	/*
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@Column(name="fecha_nacimiento")
-	private Date fechaNacimiento;
-
-	private int edad;
-
-	private String direccion;
-
-	private double saldo;
-
-	private boolean estado;
-	
-	*/
+	 * @Temporal(TemporalType.DATE)
+	 * 
+	 * @DateTimeFormat(pattern="yyyy-MM-dd")
+	 * 
+	 * @Column(name="fecha_nacimiento") private Date fechaNacimiento;
+	 * 
+	 * private int edad;
+	 * 
+	 * private String direccion;
+	 * 
+	 * private double saldo;
+	 * 
+	 * private boolean estado;
+	 * 
+	 */
 
 	/*
 	 * 
@@ -111,6 +207,5 @@ public class Usuario implements Serializable {
 	 * private Long id_rol;
 	 * 
 	 */
-
 
 }
