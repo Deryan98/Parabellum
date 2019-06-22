@@ -31,7 +31,7 @@
 		<h1
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
 			th:text="${titulo}"></h1>
-		<a th:href="@{/admin/user-form}">Crear Usuario</a>
+		<a th:href="@{/admin/user-form}" class="btn btn-success btn-xs">Crear Usuario</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -45,6 +45,7 @@
 					<th>edad</th>
 					<th>create at</th>
 					<th>estado</th>
+					<th>Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -54,12 +55,13 @@
 					<td th:text="${usuario.apellido}"></td>
 					<td th:text="${usuario.usuario}"></td>
 					<td th:text="${usuario.email}"></td>
-					<th th:text="${usuario.saldo}"></th>
+					<td th:text="${usuario.saldo}"></td>
 					<td th:text="${usuario.direccion}"></td>
 					<td th:text="${usuario.fechaNacimiento}"></td>
-					<th th:text="${usuario.saldo}"></th>
+					<td th:text="${usuario.saldo}"></td>
 					<td th:text="${usuario.createAt}"></td>
-					<th th:text="${usuario.estado}"></th>
+					<td th:text="${usuario.estado}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/user-form/} + ${usuario.idUsuario}" th:text="'editar'"></a></td>
 				</tr>
 
 			</tbody>

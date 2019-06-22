@@ -77,7 +77,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Contraseña</label>
 				<div class="col-sm-6">
-					<input type="password" th:field="*{contrasenia}" class="form-control"
+					<input type="text" th:field="*{contrasenia}" class="form-control"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
 						th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></small>
@@ -130,10 +130,11 @@
 
 			<div class="form-group row">
 				<div class="col-sm-6">
-					<input type="submit" value="Crear Cliente" class="btn btn-primary" />
+					<input type="submit" value="Enviar" class="btn btn-primary" />
 				</div>
 			</div>
-			<!-- <input type="hidden" th:field="*{id}" /> -->
+			<!-- <input type="hidden" th:field="*{idUsuario}" /> -->
+			
 
 		</form>
 	</div>

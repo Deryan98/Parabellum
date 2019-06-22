@@ -26,14 +26,19 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	 * Metodo utilizado para guardar un usuario en la base
 	 */
 	public void save(Usuario usuario) {
-		
-		em.persist(usuario);
+		if(usuario.getIdUsuario() != null &&  usuario.getIdUsuario()>0) {
+			em.merge(usuario);
+		}	
+		else {
+			em.persist(usuario);
+		}
+			
 		
 	}
 
 	public Usuario findOne(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(Usuario.class, id);
 	}
 
 	public void delete(Long id) {
