@@ -26,7 +26,7 @@ public class Proyeccion implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy="proyeccion",fetch= FetchType.EAGER)
+	@OneToMany(mappedBy="proyecciones",fetch= FetchType.EAGER)
 	@Column(name = "id_proyeccion")
 	private Long idProyeccion;
 	
