@@ -72,7 +72,7 @@ public class UsuarioController {
 			return "redirect:admin/usuarios";
 		
 		model.put("usuario", usuario);
-		model.put("titulo", "Editar Cliente");
+		model.put("titulo", "Editar Usuario");
 		return "forms/user-form";
 	}
 

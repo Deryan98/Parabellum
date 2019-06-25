@@ -87,7 +87,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Saldo</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{saldo}" class="form-control"
+					<input type="number" th:field="*{saldo}" class="form-control"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
 						th:if="${#fields.hasErrors('saldo')}" th:errors="*{saldo}"></small>
@@ -119,7 +119,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Edad</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control"
+					<input type="number" class="form-control"
 						th:field="*{edad}"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
