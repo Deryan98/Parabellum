@@ -45,6 +45,7 @@ public class Pelicula implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	//Creando Setters y Getters
 	public Long getIdPelicula() {
 		return idPelicula;
 	}
