@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +44,17 @@ public class Pelicula implements Serializable{
 	
 	@NotNull
 	private boolean estado;
+	
+	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
+	private List<Proyeccion> proyecciones;
+	public List<Proyeccion> getProyecciones() {
+		return proyecciones;
+	}
+
+	public void setProyecciones(List<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
+	}
+
 	/**
 	 * 
 	 */
@@ -99,7 +111,7 @@ public class Pelicula implements Serializable{
 		return genero;
 	}
 	
-	public void serFormato(String formato) {
+	public void setFormato(String formato) {
 		this.formato = formato;
 	}
 	

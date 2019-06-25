@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class Sala implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@OneToMany(mappedBy = "salas", fetch = FetchType.EAGER)
-	@Column(name = "id_asiento")
+	@Column(name = "id_sala")
 	private Long idSala;
 
 	@NotEmpty
@@ -30,6 +31,18 @@ public class Sala implements Serializable {
 
 	@NotEmpty
 	private boolean estado;
+	
+	@OneToMany(mappedBy="salas",fetch=FetchType.EAGER)
+	private List<Funcion> funciones;
+	
+
+	public List<Funcion> getFunciones() {
+		return funciones;
+	}
+
+	public void setFunciones(List<Funcion> funciones) {
+		this.funciones = funciones;
+	}
 
 	public Long getIdSala() {
 		return idSala;

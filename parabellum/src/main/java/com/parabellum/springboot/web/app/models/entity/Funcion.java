@@ -45,8 +45,16 @@ public class Funcion implements Serializable{
 	@NotNull
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="id_sala")
-	private Long idSala;
+	private Sala idSala;
 	
+	public Sala getIdSala() {
+		return idSala;
+	}
+
+	public void setIdSala(Sala idSala) {
+		this.idSala = idSala;
+	}
+
 	@NotNull
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name="id_proyeccion")
@@ -78,13 +86,7 @@ public class Funcion implements Serializable{
 		this.horario = horario;
 	}
 
-	public Long getIdSala() {
-		return idSala;
-	}
-
-	public void setIdSala(Long idSala) {
-		this.idSala = idSala;
-	}
+	
 
 	public Long getIdProyeccion() {
 		return idProyeccion;
