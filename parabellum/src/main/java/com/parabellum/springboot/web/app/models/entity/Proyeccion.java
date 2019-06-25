@@ -2,8 +2,11 @@ package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name="proyecciones")
 public class Proyeccion implements Serializable{
 
 	/**
@@ -26,7 +32,6 @@ public class Proyeccion implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy="proyecciones",fetch= FetchType.EAGER)
 	@Column(name = "id_proyeccion")
 	private Long idProyeccion;
 	
@@ -49,9 +54,19 @@ public class Proyeccion implements Serializable{
 	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_pelicula")
-	private Long idPelicula;
+	private Pelicula peliculas;
 
+	@OneToMany(mappedBy="proyecciones", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
+	private List<Funcion> funciones;
 	
+	public List<Funcion> getFunciones() {
+		return funciones;
+	}
+
+	public void setFunciones(List<Funcion> funciones) {
+		this.funciones = funciones;
+	}
+
 	//Getters and Setters
 	public Long getIdProyeccion() {
 		return idProyeccion;
@@ -93,12 +108,12 @@ public class Proyeccion implements Serializable{
 		this.estado = estado;
 	}
 
-	public Long getIdPelicula() {
-		return idPelicula;
+	public Pelicula getPeliculas() {
+		return peliculas;
 	}
 
-	public void setIdPelicula(Long idPelicula) {
-		this.idPelicula = idPelicula;
+	public void setPeliculas(Pelicula peliculas) {
+		this.peliculas = peliculas;
 	}
 	
 	

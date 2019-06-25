@@ -20,7 +20,6 @@ public class Pelicula implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy="peliculas",fetch= FetchType.EAGER)
 	@Column(name = "id_pelicula")
 	private Long idPelicula;
 	
@@ -47,6 +46,8 @@ public class Pelicula implements Serializable{
 	
 	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
 	private List<Proyeccion> proyecciones;
+	
+	
 	public List<Proyeccion> getProyecciones() {
 		return proyecciones;
 	}

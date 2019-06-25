@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name="funciones")
 public class Funcion implements Serializable{
 	
 	/**
@@ -43,22 +45,22 @@ public class Funcion implements Serializable{
 	private Date horario;
 	
 	@NotNull
-	@ManyToOne(fetch= FetchType.EAGER)
+	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="id_sala")
-	private Sala idSala;
+	private Sala salas;
 	
-	public Sala getIdSala() {
-		return idSala;
+	public Sala getSalas() {
+		return salas;
 	}
 
-	public void setIdSala(Sala idSala) {
-		this.idSala = idSala;
+	public void setSalas(Sala salas) {
+		this.salas = salas;
 	}
 
 	@NotNull
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name="id_proyeccion")
-	private Long idProyeccion;
+	private Proyeccion proyecciones;
 
 	
 	//Getters and Setters
@@ -88,12 +90,12 @@ public class Funcion implements Serializable{
 
 	
 
-	public Long getIdProyeccion() {
-		return idProyeccion;
+	public Proyeccion getProyecciones() {
+		return proyecciones;
 	}
 
-	public void setIdProyeccion(Long idProyeccion) {
-		this.idProyeccion = idProyeccion;
+	public void setProyecciones(Proyeccion proyecciones) {
+		this.proyecciones = proyecciones;
 	}
 	
 	

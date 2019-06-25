@@ -3,6 +3,7 @@ package com.parabellum.springboot.web.app.models.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,6 @@ public class Sala implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy = "salas", fetch = FetchType.EAGER)
 	@Column(name = "id_sala")
 	private Long idSala;
 
@@ -32,7 +32,7 @@ public class Sala implements Serializable {
 	@NotEmpty
 	private boolean estado;
 	
-	@OneToMany(mappedBy="salas",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="salas",fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Funcion> funciones;
 	
 
