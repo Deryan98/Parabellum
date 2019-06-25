@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.parabellum.springboot.web.app.models.entity.Usuario;
 import com.parabellum.springboot.web.app.models.service.IUsuarioService;
@@ -53,23 +54,32 @@ public class UsuarioController {
 	 * guarda el usuario en la base de datos
 	 */
 	@RequestMapping(value="/user-form", method=RequestMethod.POST)
-	public String guardar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
+	public String guardar(@Valid Usuario usuario, BindingResult result, Model model, RedirectAttributes flash,SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo","Formulario de Usuario");
 			return "forms/user-form";
-		}	
+		}
+		String mensajeFlash = (usuario.getIdUsuario() != null)?"Usuario Editado con éxito!":"Usuario Creado con éxito!";
 		usuarioService.save(usuario);
 		status.setComplete();
+		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:/admin/usuarios";
 	}
 	
 	@RequestMapping(value="/user-form/{id}")
-	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
+	public String editar(@PathVariable(value="id") Long id,RedirectAttributes flash, Map<String, Object> model) {
 		Usuario usuario = null;
-		if(id>0)
+		if(id>0) {
 			usuario = usuarioService.findOne(id);
-		else
-			return "redirect:admin/usuarios";
+			if(usuario == null) {
+				flash.addFlashAttribute("error", "El ID del usuario no existe en la BBDD!");
+				return "redirect:/admin/usuarios";
+			}
+		}
+		else {
+			flash.addFlashAttribute("error", "El ID del usuario no puede ser cero!");
+			return "redirect:/admin/usuarios";
+		}
 		
 		model.put("usuario", usuario);
 		model.put("titulo", "Editar Usuario");

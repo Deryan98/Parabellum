@@ -3,46 +3,53 @@
 <head th:replace="layouts/admin-layout :: head"></head>
 <body>
 	<header th:replace="layouts/admin-layout :: header"></header>
-	<div class="container">
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
 
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<a th:href="@{/admin/user-form}" class="btn btn-success btn-xs">Crear Usuario</a>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>nombre</th>
-					<th>apellido</th>
-					<th>usuario</th>
-					<th>correo</th>
-					<th>saldo</th>
-					<th>direccion</th>
-					<th>fecha nacimiento</th>
-					<th>edad</th>
-					<th>create at</th>
-					<th>estado</th>
-					<th>Editar</th>
-				</tr>
-			</thead>
-			<tbody>
+				<h4 class="card-title"><a th:href="@{/admin/user-form}" class="btn btn-success btn-xs">Crear
+					Usuario</a>
+				</h4>
+				
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>nombre</th>
+							<th>apellido</th>
+							<th>usuario</th>
+							<th>correo</th>
+							<th>saldo</th>
+							<th>direccion</th>
+							<th>fecha nacimiento</th>
+							<th>edad</th>
+							<th>create at</th>
+							<th>estado</th>
+							<th>Editar</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<tr th:each="usuario: ${usuarios}">
-					<td th:text="${usuario.nombre}"></td>
-					<td th:text="${usuario.apellido}"></td>
-					<td th:text="${usuario.usuario}"></td>
-					<td th:text="${usuario.email}"></td>
-					<td th:text="${usuario.saldo}"></td>
-					<td th:text="${usuario.direccion}"></td>
-					<td th:text="${usuario.fechaNacimiento}"></td>
-					<td th:text="${usuario.saldo}"></td>
-					<td th:text="${usuario.createAt}"></td>
-					<td th:text="${usuario.estado}"></td>
-					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/user-form/} + ${usuario.idUsuario}" th:text="'editar'"></a></td>
-				</tr>
+						<tr th:each="usuario: ${usuarios}">
+							<td th:text="${usuario.nombre}"></td>
+							<td th:text="${usuario.apellido}"></td>
+							<td th:text="${usuario.usuario}"></td>
+							<td th:text="${usuario.email}"></td>
+							<td th:text="${usuario.saldo}"></td>
+							<td th:text="${usuario.direccion}"></td>
+							<td th:text="${usuario.fechaNacimiento}"></td>
+							<td th:text="${usuario.saldo}"></td>
+							<td th:text="${usuario.createAt}"></td>
+							<td th:text="${usuario.estado}"></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/admin/user-form/} + ${usuario.idUsuario}"
+								th:text="'editar'"></a></td>
+						</tr>
 
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="layouts/admin-layout :: footer"></footer>
 </body>
