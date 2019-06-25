@@ -17,19 +17,19 @@ public class ProyeccionServiceImpl implements IProyeccionService {
 		return (List<Proyeccion>) proyeccionService.findAll();
 	}
 
-	@Override
+	
 	public void save(Proyeccion proyeccion) {
 		// TODO Auto-generated method stub
 		proyeccionService.save(proyeccion);
 	}
 
-	@Override
+	
 	public Proyeccion findOne(Long id) {
 		// TODO Auto-generated method stub
 		return proyeccionService.findOne(id);
 	}
 
-	@Override
+	
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 			proyeccionService.delete(id);
