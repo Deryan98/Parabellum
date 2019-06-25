@@ -1,10 +1,14 @@
 package com.parabellum.springboot.web.app.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.parabellum.springboot.web.app.models.entity.Pelicula;
 
 @Controller()
 @RequestMapping("/app")
@@ -28,6 +32,7 @@ public class MovieController {
 		return "index";
 	}
 	
+
 	/*
 	 *Método controlador que redirige a la vista de una película que se defina en la pantalla principal
 	 *@param model objeto para inyectar dependencias
