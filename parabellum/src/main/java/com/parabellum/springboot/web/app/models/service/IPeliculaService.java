@@ -6,7 +6,7 @@ import com.parabellum.springboot.web.app.models.entity.Pelicula;
 
 public interface IPeliculaService {
 	
-public List<Pelicula> findAll();
+	public List<Pelicula> findAll();
 	
 	public void save(Pelicula pelicula);
 	

@@ -47,87 +47,108 @@ public class Pelicula implements Serializable{
 	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
 	private List<Proyeccion> proyecciones;
 	
-	
-	public List<Proyeccion> getProyecciones() {
-		return proyecciones;
-	}
-
-	public void setProyecciones(List<Proyeccion> proyecciones) {
-		this.proyecciones = proyecciones;
-	}
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	//Creando Setters y Getters
+	
+	/*
+	 * Setters and Getters
+	 */
+
+
 	public Long getIdPelicula() {
 		return idPelicula;
 	}
 
+
 	public void setIdPelicula(Long idPelicula) {
 		this.idPelicula = idPelicula;
-		
 	}
-		
+
+
 	public String getNombre() {
 		return nombre;
 	}
-	
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public void setDuracion(String duracion) {
-		this.duracion = duracion;
-	}
-	
-	
+
+
 	public String getDuracion() {
 		return duracion;
 	}
-	
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+
+
+	public void setDuracion(String duracion) {
+		this.duracion = duracion;
 	}
-	
-	public boolean isEstado() {
-		return estado;
-	}
-	
-	public void setEstreno(boolean estreno) {
-		this.estreno = estreno;
-	}
-	
+
+
 	public boolean isEstreno() {
 		return estreno;
 	}
-	
-	public void setGenero(String genero) {
-		this.genero = genero;
+
+
+	public void setEstreno(boolean estreno) {
+		this.estreno = estreno;
 	}
-	
+
+
 	public String getGenero() {
 		return genero;
 	}
-	
-	public void setFormato(String formato) {
-		this.formato = formato;
+
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
-	
+
+
 	public String getFormato() {
 		return formato;
 	}
-	
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+
+
+	public void setFormato(String formato) {
+		this.formato = formato;
 	}
-	
+
+
 	public String getIdioma() {
 		return idioma;
 	}
-	
+
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
+
+	public List<Proyeccion> getProyecciones() {
+		return proyecciones;
+	}
+
+
+	public void setProyecciones(List<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
+	}
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

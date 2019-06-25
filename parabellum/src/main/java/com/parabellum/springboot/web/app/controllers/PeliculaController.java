@@ -23,14 +23,6 @@ public class PeliculaController {
 	
 	@Autowired
 	IPeliculaService peliculaService;
-
-	@GetMapping("/movie-form")
-	public String crear(Map<String, Object> model) {
-		Pelicula pelicula = new Pelicula();
-		model.put("pelicula", pelicula);
-		model.put("titulo","Formulario de Pelicula");
-		return "forms/movie-form";
-	}
 	
 	@GetMapping("/peliculas")
 	public String movieList(Model model) {
@@ -39,12 +31,19 @@ public class PeliculaController {
 		return "tables/movie-table";
 	}
 	
+	@GetMapping("/movie-form")
+	public String crear(Map<String, Object> model) {
+		Pelicula pelicula = new Pelicula();
+		model.put("pelicula", pelicula);
+		model.put("titulo","Formulario de Pelicula");
+		return "forms/movie-form";
+	}
+	
 	@RequestMapping(value="/movie-form", method=RequestMethod.POST)
 	public String guardar(@Valid Pelicula pelicula, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Pelicula");
 			return  "forms/movie-form";
-			
 		}
 		peliculaService.save(pelicula);
 		status.setComplete();
