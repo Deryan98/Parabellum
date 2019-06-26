@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name="proyecciones")
 public class Proyeccion implements Serializable{
@@ -56,15 +58,19 @@ public class Proyeccion implements Serializable{
 	@JoinColumn(name="id_pelicula")
 	private Pelicula peliculas;
 
-	@OneToMany(mappedBy="proyecciones", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
-	private List<Funcion> funciones;
+	@NotNull
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name="sala")
+	private Sala sala;
 	
-	public List<Funcion> getFunciones() {
-		return funciones;
+
+	public Sala getSala() {
+		return sala;
 	}
 
-	public void setFunciones(List<Funcion> funciones) {
-		this.funciones = funciones;
+	
+	public void setSala(Sala sala) {
+		this.sala = sala;
 	}
 
 	//Getters and Setters

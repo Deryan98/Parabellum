@@ -74,7 +74,6 @@ public class Pelicula implements Serializable{
 	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
 	private List<Proyeccion> proyecciones;
 	
-
 	/**
 	 * 
 	 */

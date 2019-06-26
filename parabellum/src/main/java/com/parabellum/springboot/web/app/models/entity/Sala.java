@@ -59,16 +59,16 @@ public class Sala implements Serializable {
 		return createAt;
 	}
 	
-	@OneToMany(mappedBy="salas",fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
-	private List<Funcion> funciones;
+	@OneToMany(mappedBy="sala",fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
+	private List<Proyeccion> proyecciones;
 	
 
-	public List<Funcion> getFunciones() {
-		return funciones;
+	public List<Proyeccion> getFunciones() {
+		return proyecciones;
 	}
 
-	public void setFunciones(List<Funcion> funciones) {
-		this.funciones = funciones;
+	public void setFunciones(List<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
 	}
 
 	public Long getIdSala() {
