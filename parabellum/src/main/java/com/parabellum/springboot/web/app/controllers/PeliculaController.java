@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,12 +21,13 @@ import com.parabellum.springboot.web.app.models.entity.Usuario;
 import com.parabellum.springboot.web.app.models.service.IPeliculaService;
 
 @Controller
+@SessionAttributes("pelicula")
 @RequestMapping("/admin")
 public class PeliculaController {
 	
 	
 	@Autowired
-	IPeliculaService peliculaService;
+	private IPeliculaService peliculaService;
 	
 	@GetMapping("/peliculas")
 	public String movieList(Model model) {
@@ -49,14 +51,16 @@ public class PeliculaController {
 			return  "forms/movie-form";
 		}
 		
+		System.out.println("ID DE LA PELICULA"+ pelicula.getIdPelicula());
+		
 		String mensajeFlash = (pelicula.getIdPelicula() != null) ? "Pelicula Editada con éxito!"
 				: "Pelicula Creada con éxito!";
 		peliculaService.save(pelicula);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:/admin/peliculas";
-			
 		}
+	
 	@RequestMapping(value = "/movie-form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, RedirectAttributes flash, Map<String, Object> model) {
 		
