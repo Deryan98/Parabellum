@@ -1,0 +1,45 @@
+#Version 1
+spring.datasource.url=jdbc:postgresql://localhost:5432/cine
+spring.datasource.username=postgres
+spring.datasource.password=root
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+logging.level.org.hibernate.SQL=debug
+
+#Version 2
+
+#Set here configurations for the database connection
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/cine
+spring.datasource.username=postgres
+spring.datasource.password=root
+spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+#logging.level.org.hibernate.SQL=debug
+
+#Keep connection alive if idle for a long time (needed in production)
+spring.datasource.testWhileIdle=true
+spring.datasource.validationQuery=SELECT 1
+#============================
+# = JPA / HIBERNATE
+#============================
+#show or not log for each sql query
+spring.jpa.show-sql=true
+#Hibernate dll auto (create, create-drop, update): with "create-drop" the database
+#schema will be automatically created afresh for every start of application
+spring.jpa.hibernate.dll-auto=create-drop
+
+#Naming Strategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+#Allos hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+#Version 3
+#h2 database
+spring.datasource.url=jdbc:h2:mem:cinemadb
+spring.datasource.username=admin
+spring.datasource.password=root
+spring.datasource.driver-class-name=org.h2.Driver
+spring.h2.console.enabled=true

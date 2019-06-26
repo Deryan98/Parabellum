@@ -34,12 +34,10 @@ public class Usuario implements Serializable {
 	private String apellido;
 
 	@NotEmpty
-	@Column(unique = true)
 	private String usuario;
 
 	@NotEmpty
 	@Email
-	@Column(unique = true)
 	private String email;
 
 	
