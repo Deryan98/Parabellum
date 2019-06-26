@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,12 +11,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-@Table(name = "peliculas")
+@Table(name = "peliculas",schema="public")
 public class Pelicula implements Serializable{
 
 	@Id
@@ -43,6 +49,27 @@ public class Pelicula implements Serializable{
 	
 	@NotNull
 	private boolean estado;
+	
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "create_at")
+	private Date createAt;
+	
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
+	}
 	
 	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
 	private List<Proyeccion> proyecciones;

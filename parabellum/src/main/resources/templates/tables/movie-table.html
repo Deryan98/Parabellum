@@ -14,14 +14,12 @@
 				<tr>
 					<th>nombre</th>
 					<th>duracion</th>
-					<th>pelicula</th>
 					<th>estreno</th>
 					<th>genero</th>
 					<th>formato</th>
 					<th>idioma</th>
 					<th>estado</th>
 					<th>create at</th>
-					<th>estado</th>
 					<th>Editar</th>
 				</tr>
 			</thead>
@@ -30,13 +28,13 @@
 				<tr th:each="pelicula: ${peliculas}">
 					<td th:text="${pelicula.nombre}"></td>
 					<td th:text="${pelicula.duracion}"></td>
-					<td th:text="${pelicula.pelicula}"></td>
 					<td th:text="${pelicula.estreno}"></td>
 					<td th:text="${pelicula.genero}"></td>
 					<td th:text="${pelicula.formato}"></td>
 					<td th:text="${pelicula.idioma}"></td>
 					<td th:text="${pelicula.estado}"></td>
-					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/movie-form/} + ${pelicula.idpelicula}" th:text="'editar'"></a></td>
+					<td th:text="${pelicula.createAt}"></td>		
+					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/movie-form/} + ${pelicula.idPelicula}" th:text="'editar'"></a></td>
 				</tr>
 
 			</tbody>
