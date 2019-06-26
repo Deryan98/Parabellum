@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,7 +56,12 @@ public class Pelicula implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "create_at")
 	private Date createAt;
+		
+	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
+	private List<Proyeccion> proyecciones;
 	
+	
+
 	public Date getCreateAt() {
 		return createAt;
 	}
@@ -70,9 +76,6 @@ public class Pelicula implements Serializable{
 	public void prePersist() {
 		createAt = new Date();
 	}
-	
-	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
-	private List<Proyeccion> proyecciones;
 	
 	/**
 	 * 
