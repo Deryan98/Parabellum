@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,9 +11,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "salas")
@@ -26,11 +34,30 @@ public class Sala implements Serializable {
 	@NotEmpty
 	private String nombre;
 
-	@NotEmpty
+	@NotNull
 	private int nAsiento;
 
-	@NotEmpty
+	@NotNull
 	private boolean estado;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "create_at")
+	private Date createAt;
+	
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
+	}
+	
+	
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
 	
 	@OneToMany(mappedBy="salas",fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Funcion> funciones;

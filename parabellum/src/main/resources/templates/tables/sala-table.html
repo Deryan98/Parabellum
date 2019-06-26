@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/admin-layout :: head"></head>
+<body>
+	<header th:replace="layouts/admin-layout :: header"></header>
+	<div class="container">
+
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+		<a th:href="@{/admin/sala-form}" class="btn btn-success btn-xs">Crear Sala</a>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>nombre</th>
+					<th>nAsiento</th>
+					<th>estado</th>
+					<th>create at</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="sala: ${salas}">
+					<td th:text="${sala.nombre}"></td>
+					<td th:text="${sala.nAsiento}"></td>
+					<td th:text="${sala.estado}"></td>
+					<td th:text="${sala.createAt}"></td>		
+					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/sala-form/} + ${sala.idSala}" th:text="'editar'"></a></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="layouts/admin-layout :: footer"></footer>
+</body>
+</html>

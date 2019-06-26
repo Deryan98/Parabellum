@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/admin-layout :: head"></head>
+<body>
+	<header th:replace="layouts/admin-layout :: header"></header>
+	<div class="container">
+		<h1 th:text="${titulo}"
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+		<div th:object="${sala}" th:remove="tag">
+			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+			</ul>
+		</div>
+		<form th:action="@{/admin/sala-form}" th:object="${sala}"
+			method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombre}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">nAsiento</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nAsiento}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nAsiento')}" th:errors="*{nAsiento}"></small>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Estado</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{estado}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small>
+				</div>
+			</div>
+			 
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Enviar" class="btn btn-primary" />
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+	<footer th:replace="layouts/admin-layout :: footer"></footer>
+
+</body>
+</html>
