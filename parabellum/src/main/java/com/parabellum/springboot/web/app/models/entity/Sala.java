@@ -35,6 +35,7 @@ public class Sala implements Serializable {
 	private String nombre;
 
 	@NotNull
+	@Column(name = "n_asientos")
 	private int nAsiento;
 
 	@NotNull
