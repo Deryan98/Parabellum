@@ -56,7 +56,7 @@ public class Proyeccion implements Serializable{
 	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_pelicula")
-	private Pelicula peliculas;
+	private Pelicula pelicula;
 
 	@NotNull
 	@ManyToOne(fetch= FetchType.LAZY)
@@ -115,11 +115,11 @@ public class Proyeccion implements Serializable{
 	}
 
 	public Pelicula getPeliculas() {
-		return peliculas;
+		return pelicula;
 	}
 
-	public void setPeliculas(Pelicula peliculas) {
-		this.peliculas = peliculas;
+	public void setPeliculas(Pelicula pelicula) {
+		this.pelicula = pelicula;
 	}
 	
 	
