@@ -42,7 +42,7 @@ public class UsuarioController {
 
 		Page<Usuario> usuarios = usuarioService.findAll(pageRequest);
 		
-		PageRender<Usuario> pageRender = new PageRender<>("/admin/usuarios", usuarios);
+		PageRender<Usuario> pageRender = new PageRender("/admin/usuarios", usuarios);
 
 		model.addAttribute("titulo", "Listado de Usuarios");
 
