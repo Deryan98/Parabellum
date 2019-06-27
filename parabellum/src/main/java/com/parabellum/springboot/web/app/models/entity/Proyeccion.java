@@ -2,9 +2,8 @@ package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,24 +12,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name="proyecciones")
 public class Proyeccion implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,10 +30,14 @@ public class Proyeccion implements Serializable{
 	private Long idProyeccion;
 	
 	@NotNull
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_inicio")
 	private Date fechaInicio;
 	
 	@NotNull
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_fin")
 	private Date fechaFin;
 	
@@ -54,15 +50,41 @@ public class Proyeccion implements Serializable{
 	private Boolean estado;
 	
 	@NotNull
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_pelicula")
-	private Pelicula peliculas;
+	private Pelicula pelicula;
+	
+	private Long forPelicula;
 
 	@NotNull
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="id_sala")
 	private Sala sala;
 	
+	private Long forSala;
+
+	
+
+
+	public Long getForPelicula() {
+		return forPelicula;
+	}
+
+
+	public void setForPelicula(Long forPelicula) {
+		this.forPelicula = forPelicula;
+	}
+
+
+	public Long getForSala() {
+		return forSala;
+	}
+
+
+	public void setForSala(Long forSala) {
+		this.forSala = forSala;
+	}
+
 
 	public Sala getSala() {
 		return sala;
@@ -114,13 +136,20 @@ public class Proyeccion implements Serializable{
 		this.estado = estado;
 	}
 
-	public Pelicula getPeliculas() {
-		return peliculas;
+	public Pelicula getPelicula() {
+		return pelicula;
 	}
 
-	public void setPeliculas(Pelicula pelicula) {
-		this.peliculas = pelicula;
+	public void setPelicula(Pelicula pelicula) {
+		this.pelicula = pelicula;
 	}
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

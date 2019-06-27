@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.parabellum.springboot.web.app.models.dao.IProyeccionDao;
 import com.parabellum.springboot.web.app.models.dao.ISalaDao;
+import com.parabellum.springboot.web.app.models.entity.Proyeccion;
 import com.parabellum.springboot.web.app.models.entity.Sala;
 
 @Service
@@ -14,6 +16,9 @@ public class SalaServiceImpl implements ISalaService {
 	
 	@Autowired
 	private ISalaDao salaDao;
+	
+	@Autowired
+	private IProyeccionDao proyeccionDao;
 
 	@Transactional(readOnly = true)
 	public List<Sala> findAll() {
@@ -40,6 +45,13 @@ public class SalaServiceImpl implements ISalaService {
 	public void delete(Long id) {
 		
 		salaDao.deleteById(id);
+		
+	}
+	
+	@Transactional
+	public void saveProyeccion(Proyeccion proyeccion) {
+		
+		proyeccionDao.save(proyeccion);
 		
 	}
 

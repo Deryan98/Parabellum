@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,10 +58,17 @@ public class Pelicula implements Serializable{
 	@Column(name = "create_at")
 	private Date createAt;
 		
-	@OneToMany(mappedBy="peliculas", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy="pelicula", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Proyeccion> proyecciones;
 	
 	
+	/*
+	 * Constructor para instanciar la lista de Proyecciones
+	 */
+	public Pelicula() {
+		proyecciones = new ArrayList<Proyeccion>();
+	}
+
 
 	public Date getCreateAt() {
 		return createAt;
@@ -175,6 +183,11 @@ public class Pelicula implements Serializable{
 
 	public void setProyecciones(List<Proyeccion> proyecciones) {
 		this.proyecciones = proyecciones;
+	}
+	
+	
+	public void addProyeccion(Proyeccion proyeccion) {
+		proyecciones.add(proyeccion);
 	}
 
 

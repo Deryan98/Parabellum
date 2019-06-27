@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/admin-layout :: head"></head>
+<body>
+	<header th:replace="layouts/admin-layout :: header"></header>
+	<div class="container">
+
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+		<a th:href="@{/admin/proyeccion-form}" class="btn btn-success btn-xs">Crear Proyeccion</a>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Pelicula</th>
+					<th>Sala</th>
+					<th>Fecha Inicio</th>
+					<th>Fecha Fin</th>
+					<th>Costo</th>
+					<th>Estado</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="proyeccion: ${proyecciones}">
+					<td th:text="${proyeccion.pelicula}"></td>
+					<td th:text="${proyeccion.sala}"></td>
+					<td th:text="${proyeccion.fechaInicio}"></td>
+					<td th:text="${proyeccion.fechaFin}"></td>
+					<td th:text="${proyeccion.costo}"></td>	
+					<td th:text="${proyeccion.estado}"></td>	
+					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/proyeccion-form/} + ${proyeccion.idProyeccion}" th:text="'editar'"></a></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="layouts/admin-layout :: footer"></footer>
+</body>
+</html>

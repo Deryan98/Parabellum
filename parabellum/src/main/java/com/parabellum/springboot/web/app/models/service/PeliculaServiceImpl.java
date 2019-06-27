@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.parabellum.springboot.web.app.models.dao.IPeliculaDao;
+import com.parabellum.springboot.web.app.models.dao.IProyeccionDao;
 import com.parabellum.springboot.web.app.models.entity.Pelicula;
+import com.parabellum.springboot.web.app.models.entity.Proyeccion;
 
 @Service
 public class PeliculaServiceImpl implements IPeliculaService{
 
 	@Autowired
 	private IPeliculaDao peliculaDao;
+	
+	@Autowired
+	private IProyeccionDao proyeccionDao;
 	
 	@Transactional(readOnly = true)
 	public List<Pelicula> findAll() {
@@ -40,6 +45,13 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	public void delete(Long id) {
 		
 		peliculaDao.deleteById(id);
+		
+	}
+	
+	@Transactional
+	public void saveProyeccion(Proyeccion proyeccion) {
+		
+		proyeccionDao.save(proyeccion);
 		
 	}
 	

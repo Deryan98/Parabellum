@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,16 +61,24 @@ public class Sala implements Serializable {
 		return createAt;
 	}
 	
-	@OneToMany(mappedBy="sala",fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="sala",fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private List<Proyeccion> proyecciones;
 	
+	public Sala() {
+		proyecciones = new ArrayList<Proyeccion>();
+	}
+	
 
-	public List<Proyeccion> getFunciones() {
+	public List<Proyeccion> getProyecciones() {
 		return proyecciones;
 	}
 
-	public void setFunciones(List<Proyeccion> proyecciones) {
+	public void setProyeciones(List<Proyeccion> proyecciones) {
 		this.proyecciones = proyecciones;
+	}
+	
+	public void addProyeccion(Proyeccion proyeccion) {
+		proyecciones.add(proyeccion);
 	}
 
 	public Long getIdSala() {

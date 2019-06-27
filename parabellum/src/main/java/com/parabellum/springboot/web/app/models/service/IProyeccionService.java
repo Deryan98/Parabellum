@@ -6,6 +6,7 @@ import com.parabellum.springboot.web.app.models.entity.Proyeccion;
 
 
 
+
 public interface IProyeccionService  {
 
 	public List<Proyeccion> findAll();
@@ -15,4 +16,5 @@ public interface IProyeccionService  {
 	public Proyeccion findOne(Long id);
 	
 	public void delete(Long id);
+	
 }
