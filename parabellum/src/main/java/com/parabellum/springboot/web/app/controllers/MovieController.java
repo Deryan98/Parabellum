@@ -15,7 +15,7 @@ import com.parabellum.springboot.web.app.models.entity.Pelicula;
 import com.parabellum.springboot.web.app.models.service.IPeliculaService;
 
 @Controller()
-@RequestMapping("/app")
+
 public class MovieController {
 	
 	@Autowired

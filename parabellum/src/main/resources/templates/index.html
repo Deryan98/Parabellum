@@ -2,6 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title th:text="${title}"></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous" />
 
 <link th:href="@{/css/style.css}" rel='stylesheet' type='text/css' />
 
@@ -26,6 +30,7 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <!----start-dropdown--->
 <script type="text/javascript">
+
 	var $ = jQuery.noConflict();
 	$(function() {
 		$('#activator').click(function() {
@@ -40,6 +45,7 @@
 		});
 	});
 	$(document).ready(function() {
+		
 		//Hide (Collapse) the toggle containers on load
 		$(".toggle_container").hide();
 		//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
@@ -55,59 +61,7 @@
 </head>
 <body>
 	<!---start-wrap---->
-	<!---start-header---->
-	<div class="header">
-		<div class="wrap">
-			<div class="logo-head">
-				<a href="/app/index">
-					<h1 th:text="${header}" class="logo"></h1>
-				</a>
-			</div>
-			<!-- 
-				<div class="logo">
-					<a href="/app/index"><img th:src="@{/images/logo.png}" title="pinbal" /></a>
-				</div>
-				
-				-->
-			<div class="nav-icon">
-				<a href="#" class="right_bt" id="activator"><span> </span> </a>
-			</div>
-			<div class="box" id="box">
-				<div class="box_content">
-					<div class="box_content_center">
-						<div class="form_content">
-							<div class="menu_box_list">
-								<ul>
-									<li><a href="#"><span>home</span></a></li>
-									<li><a href="#"><span>About</span></a></li>
-									<li><a href="#"><span>Works</span></a></li>
-									<li><a href="#"><span>Clients</span></a></li>
-									<li><a href="#"><span>Blog</span></a></li>
-									<li><a href="contact.html"><span>Contact</span></a></li>
-									<div class="clear"></div>
-								</ul>
-							</div>
-							<a class="boxclose" id="boxclose"> <span> </span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="top-searchbar">
-				<form>
-					<input type="text" /><input type="submit" value="" />
-				</form>
-			</div>
-			<div class="userinfo">
-				<div class="user">
-					<ul>
-						<li><a href="#"><img th:src="@{/images/user-pic.png}"
-								title="user-name" /><span>Ipsum</span></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+	<header th:replace="layouts/admin-layout :: header"></header>
 	<!---//End-header---->
 	<!---start-content---->
 	<div class="content">
@@ -117,7 +71,7 @@
 					<!-- These are our grid blocks -->
 					<div th:each="pelicula: ${peliculas}">
 						<li>
-							<a th:href="@{/app/movie-info/} + ${pelicula.idPelicula}">
+							<a th:href="@{/movie-info/} + ${pelicula.idPelicula}">
 								<img th:src="${pelicula.imagen}" width="282" height="400" />
 								<div class="post-info">
 									<div class="post-basic-info">
@@ -164,26 +118,7 @@
 					$handler.wookmark(options);
 				});
 			}
-			/**
-			 * When scrolled all the way to the bottom, add more tiles
-			 */
-			function onScroll() {
-				// Check if we're within 100 pixels of the bottom edge of the broser window.
-				var winHeight = window.innerHeight ? window.innerHeight
-						: $window.height(), // iphone fix
-				closeToBottom = ($window.scrollTop() + winHeight > $document
-						.height() - 100);
-
-				if (closeToBottom) {
-					// Get the first then items from the grid, clone them, and add them to the bottom of the grid
-					var $items = $('li', $tiles), $firstTen = $items.slice(0,
-							10);
-					$tiles.append($firstTen.clone());
-
-					applyLayout();
-				}
-			}
-			;
+			
 
 			// Call the layout function for the first time
 			applyLayout();
@@ -201,6 +136,7 @@
 	</div>
 	<!----//End-footer--->
 	<!---//End-wrap---->
+	<footer th:replace="layouts/admin-layout :: footer"></footer>
 </body>
 </html>
 
