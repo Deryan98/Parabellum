@@ -10,10 +10,15 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.parabellum.springboot.web.app.auth.handler.LoginSuccessHandler;
+
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
+	@Autowired
+	private LoginSuccessHandler successHandler;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
