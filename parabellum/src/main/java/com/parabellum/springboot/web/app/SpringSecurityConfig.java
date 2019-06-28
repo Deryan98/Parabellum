@@ -23,6 +23,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.anyRequest().authenticated()
 		.and()
 		    .formLogin()
+	        .successHandler(successHandler)
 	        .loginPage("/login")
 		    .permitAll()
 		.and()
