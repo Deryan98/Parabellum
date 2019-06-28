@@ -1,5 +1,6 @@
 package com.parabellum.springboot.web.app.controllers;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -55,6 +56,7 @@ public class PeliculaController {
 		
 		String mensajeFlash = (pelicula.getIdPelicula() != null) ? "Pelicula Editada con éxito!"
 				: "Pelicula Creada con éxito!";
+		pelicula.setModifiedAt(new Date());
 		peliculaService.save(pelicula);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);

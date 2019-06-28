@@ -47,6 +47,26 @@ public class Sala implements Serializable {
 	@Column(name = "create_at")
 	private Date createAt;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "modified_at")
+	private Date modifiedAt;
+	
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+
+
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+
+
+	public void setProyecciones(List<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
+	}
+
+
 	@PrePersist
 	public void prePersist() {
 		createAt = new Date();

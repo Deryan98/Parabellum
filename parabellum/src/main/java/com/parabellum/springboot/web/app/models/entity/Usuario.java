@@ -49,9 +49,22 @@ public class Usuario implements Serializable {
 	@PrePersist
 	public void prePersist() {
 		createAt = new Date();
-		estado = true;
+		
 	}
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "modified_at")
+	private Date modifiedAt;
+	
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

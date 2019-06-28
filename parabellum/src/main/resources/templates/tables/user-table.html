@@ -15,16 +15,14 @@
 				<table class="table table-striped">
 					<thead class="thead-dark">
 						<tr>
+							<th>Id</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
-							<th>Usuario</th>
-							<th>Correo</th>
 							<th>Saldo</th>
-							<th>Direccion</th>
 							<th>Nacimiento</th>
 							<th>Edad</th>
-							<th>Creación</th>
-							<th>Modificación</th>
+							<th>CreaciÃ³n</th>
+							<th>ModificaciÃ³n</th>
 							<th>Estado</th>
 							<th>Editar</th>
 						</tr>
@@ -32,16 +30,16 @@
 					<tbody>
 
 						<tr th:each="usuario: ${usuarios}">
+							<td th:text="${usuario.idUsuario}"></td>
 							<td th:text="${usuario.nombre}"></td>
 							<td th:text="${usuario.apellido}"></td>
-							<td th:text="${usuario.usuario}"></td>
-							<td th:text="${usuario.email}"></td>
 							<td th:text="${usuario.saldo}"></td>
-							<td th:text="${usuario.direccion}"></td>
 							<td th:text="${usuario.fechaNacimiento}"></td>
 							<td th:text="${usuario.edad}"></td>
 							<td th:text="${usuario.createAt}"></td>
-							<td th:text="${usuario.estado}"></td>
+							<td th:text="${usuario.modifiedAt}"></td>
+							<td th:text="${usuario.estado} ? 'Activo' : 'Inactivo'" />
+							
 							<td><a class="btn btn-primary btn-xs"
 								th:href="@{/admin/user-form/} + ${usuario.idUsuario}"
 								th:text="'editar'"></a></td>

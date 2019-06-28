@@ -17,6 +17,8 @@
 					<th>Fecha Inicio</th>
 					<th>Fecha Fin</th>
 					<th>Costo</th>
+					<th>Creación</th>
+					<th>Modificación</th>
 					<th>Estado</th>
 					<th>Editar</th>
 				</tr>
@@ -28,7 +30,9 @@
 					<td th:text="${proyeccion.sala}"></td>
 					<td th:text="${proyeccion.fechaInicio}"></td>
 					<td th:text="${proyeccion.fechaFin}"></td>
-					<td th:text="${proyeccion.costo}"></td>	
+					<td th:text="${proyeccion.costo}"></td>
+					<td th:text="${proyeccion.createAt}"></td>	
+					<td th:text="${proyeccion.modifiedAt}"></td>	
 					<td th:text="${proyeccion.estado}"></td>	
 					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/proyeccion-form/} + ${proyeccion.idProyeccion}" th:text="'editar'"></a></td>
 				</tr>

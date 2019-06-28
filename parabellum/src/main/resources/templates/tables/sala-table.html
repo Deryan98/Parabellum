@@ -12,10 +12,11 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>nombre</th>
-					<th>nAsiento</th>
-					<th>estado</th>
-					<th>create at</th>
+					<th>Nombre</th>
+					<th>NAsiento</th>
+					<th>Creación</th>
+					<th>Modificación</th>
+					<th>Estado</th>
 					<th>Editar</th>
 				</tr>
 			</thead>
@@ -24,8 +25,9 @@
 				<tr th:each="sala: ${salas}">
 					<td th:text="${sala.nombre}"></td>
 					<td th:text="${sala.nAsiento}"></td>
+					<td th:text="${sala.createAt}"></td>
+					<td th:text="${sala.modifiedAt}"></td>	
 					<td th:text="${sala.estado}"></td>
-					<td th:text="${sala.createAt}"></td>		
 					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/sala-form/} + ${sala.idSala}" th:text="'editar'"></a></td>
 				</tr>
 

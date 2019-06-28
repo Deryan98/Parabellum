@@ -57,6 +57,11 @@ public class Pelicula implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "create_at")
 	private Date createAt;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "modified_at")
+	private Date modifiedAt;
 		
 	@OneToMany(mappedBy="pelicula", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Proyeccion> proyecciones;
@@ -186,6 +191,18 @@ public class Pelicula implements Serializable{
 	}
 	
 	
+	
+	
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+
+
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+
+
 	public void addProyeccion(Proyeccion proyeccion) {
 		proyecciones.add(proyeccion);
 	}

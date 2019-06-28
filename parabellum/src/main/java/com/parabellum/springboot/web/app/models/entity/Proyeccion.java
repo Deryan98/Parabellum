@@ -54,38 +54,38 @@ public class Proyeccion implements Serializable{
 	@JoinColumn(name="id_pelicula")
 	private Pelicula pelicula;
 	
-	private Long forPelicula;
+	public Date getCreateAt() {
+		return createAt;
+	}
 
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
 	@NotNull
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="id_sala")
 	private Sala sala;
 	
-	private Long forSala;
-
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "modified_at")
+	private Date modifiedAt;
 	
-
-
-	public Long getForPelicula() {
-		return forPelicula;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "create_at")
+	private Date createAt;
+	
+	public Date getModifiedAt() {
+		return modifiedAt;
 	}
 
 
-	public void setForPelicula(Long forPelicula) {
-		this.forPelicula = forPelicula;
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
 	}
-
-
-	public Long getForSala() {
-		return forSala;
-	}
-
-
-	public void setForSala(Long forSala) {
-		this.forSala = forSala;
-	}
-
-
+	
 	public Sala getSala() {
 		return sala;
 	}
@@ -146,6 +146,8 @@ public class Proyeccion implements Serializable{
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	public static long getSerialversionuid() {

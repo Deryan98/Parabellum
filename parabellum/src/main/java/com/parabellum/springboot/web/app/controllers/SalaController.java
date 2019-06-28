@@ -1,5 +1,6 @@
 package com.parabellum.springboot.web.app.controllers;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -51,6 +52,7 @@ public class SalaController {
 		
 		String mensajeFlash = (sala.getIdSala() != null) ? "Sala Editada con éxito!"
 				: "Sala Creada con éxito!";
+		sala.setModifiedAt(new Date());
 		salaService.save(sala);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);

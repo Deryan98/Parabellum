@@ -1,6 +1,7 @@
 package com.parabellum.springboot.web.app.controllers;
 
 import java.util.Map;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -86,6 +87,8 @@ public class UsuarioController {
 		}
 		String mensajeFlash = (usuario.getIdUsuario() != null) ? "Usuario Editado con éxito!"
 				: "Usuario Creado con éxito!";
+		
+		usuario.setModifiedAt(new Date());
 		
 		usuarioService.save(usuario);
 		
