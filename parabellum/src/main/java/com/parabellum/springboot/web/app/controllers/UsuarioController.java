@@ -42,19 +42,12 @@ public class UsuarioController {
 	 */
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET)
 	public String userlist(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-
 		Pageable pageRequest = PageRequest.of(page, 4);
-
 		Page<Usuario> usuarios = usuarioService.findAll(pageRequest);
-		
 		PageRender<Usuario> pageRender = new PageRender("/admin/usuarios", usuarios);
-
 		model.addAttribute("titulo", "Listado de Usuarios");
-
 		model.addAttribute("usuarios", usuarios);
-		
 		model.addAttribute("page", pageRender);
-
 		return "tables/user-table";
 	}
 

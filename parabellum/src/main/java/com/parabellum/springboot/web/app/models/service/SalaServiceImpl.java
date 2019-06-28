@@ -3,6 +3,8 @@ package com.parabellum.springboot.web.app.models.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +12,7 @@ import com.parabellum.springboot.web.app.models.dao.IProyeccionDao;
 import com.parabellum.springboot.web.app.models.dao.ISalaDao;
 import com.parabellum.springboot.web.app.models.entity.Proyeccion;
 import com.parabellum.springboot.web.app.models.entity.Sala;
+import com.parabellum.springboot.web.app.models.entity.Usuario;
 
 @Service
 public class SalaServiceImpl implements ISalaService {
@@ -54,5 +57,11 @@ public class SalaServiceImpl implements ISalaService {
 		proyeccionDao.save(proyeccion);
 		
 	}
-
+	
+	@Transactional(readOnly = true)
+	public Page<Sala> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return salaDao.findAll(pageable);
+	}
+	
 }
