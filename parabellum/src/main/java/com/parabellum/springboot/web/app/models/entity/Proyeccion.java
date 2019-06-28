@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -49,7 +50,7 @@ public class Proyeccion implements Serializable{
 	@Column(name="estado")
 	private Boolean estado;
 	
-	@NotNull
+	//@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_pelicula")
 	private Pelicula pelicula;
@@ -62,7 +63,7 @@ public class Proyeccion implements Serializable{
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	@NotNull
+	//@NotNull
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="id_sala")
 	private Sala sala;
@@ -76,6 +77,11 @@ public class Proyeccion implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "create_at")
 	private Date createAt;
+	
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
+	}
 	
 	public Date getModifiedAt() {
 		return modifiedAt;

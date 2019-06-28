@@ -12,13 +12,9 @@
 				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
 			</ul>
 		</div>
-<<<<<<< HEAD
 		<form th:action="@{/admin/proyeccion-form}" th:object="${proyeccion}"
 			method="post">
-=======
-		<form th:action="@{/admin/proyeccion-form(idPelicula=1,idSala=1)}"
-			th:object="${proyeccion}" method="post">
->>>>>>> f4ac923330b8069219cf70e18dd120a0a6eddd87
+
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Fecha Inicio</label>
 				<div class="col-sm-6">
@@ -50,34 +46,21 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Estado</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{estado}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small>
-				</div>
-			</div>
-			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Pelicula</label>
 				<div class="col-sm-6">
-<<<<<<< HEAD
-					<select name="idPelicula" class="form-control"  >
-						<option th:each="pelicula: ${peliculas}" th:value="${pelicula.idPelicula}"
+
+					<select  class="form-control"  >
+						<option th:name="idPelicula" th:each="pelicula: ${peliculas}" th:value="${pelicula.idPelicula}"
 							th:text="${pelicula.nombre}"></option>
-=======
-					<select name="idSala" class="form-control">
-						<option th:each="pelicula: ${peliculas}"
-							th:value="${pelicula.idPelicula}" th:text="${pelicula.nombre}"></option>
->>>>>>> f4ac923330b8069219cf70e18dd120a0a6eddd87
+
 					</select>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Sala</label>
 				<div class="col-sm-6">
-					<select name="idSala" class="form-control">
-						<option th:each="sala: ${salas}" th:value="${sala.idSala}"
+					<select  th:name="idSala" class="form-control">
+						<option  th:each="sala: ${salas}" th:value="${sala.idSala}"
 							th:text="${sala.nombre}"></option>
 					</select>
 				</div>
