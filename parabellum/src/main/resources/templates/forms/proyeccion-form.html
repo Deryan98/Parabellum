@@ -49,8 +49,8 @@
 				<label class="col-sm-2 col-form-label">Pelicula</label>
 				<div class="col-sm-6">
 
-					<select  class="form-control"  >
-						<option th:name="idPelicula" th:each="pelicula: ${peliculas}" th:value="${pelicula.idPelicula}"
+					<select th:name="idPelicula" class="form-control"  >
+						<option  th:each="pelicula: ${peliculas}" th:value="${pelicula.idPelicula}"
 							th:text="${pelicula.nombre}"></option>
 
 					</select>
