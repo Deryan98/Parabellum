@@ -3,36 +3,43 @@
 <head th:replace="layouts/admin-layout :: head"></head>
 <body>
 	<header th:replace="layouts/admin-layout :: header"></header>
-	<div class="container">
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
 
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<a th:href="@{/admin/sala-form}" class="btn btn-success btn-xs">Crear Sala</a>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>NAsiento</th>
-					<th>Creación</th>
-					<th>Modificación</th>
-					<th>Estado</th>
-					<th>Editar</th>
-				</tr>
-			</thead>
-			<tbody>
+				<h4 class="card-title">
+					<a th:href="@{/admin/sala-form}" class="btn btn-success btn-xs">Crear
+						Sala</a>
+				</h4>
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Nombre</th>
+							<th>NAsiento</th>
+							<th>Creación</th>
+							<th>Modificación</th>
+							<th>Estado</th>
+							<th>Editar</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<tr th:each="sala: ${salas}">
-					<td th:text="${sala.nombre}"></td>
-					<td th:text="${sala.nAsiento}"></td>
-					<td th:text="${sala.createAt}"></td>
-					<td th:text="${sala.modifiedAt}"></td>	
-					<td th:text="${sala.estado}"></td>
-					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/sala-form/} + ${sala.idSala}" th:text="'editar'"></a></td>
-				</tr>
-
-			</tbody>
-		</table>
+						<tr th:each="sala: ${salas}">
+							<td th:text="${sala.nombre}"></td>
+							<td th:text="${sala.nAsiento}"></td>
+							<td th:text="${sala.createAt}"></td>
+							<td th:text="${sala.modifiedAt}"></td>
+							<td th:text="${sala.estado}"></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/admin/sala-form/} + ${sala.idSala}"
+								th:text="'editar'"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="layouts/admin-layout :: footer"></footer>
 </body>

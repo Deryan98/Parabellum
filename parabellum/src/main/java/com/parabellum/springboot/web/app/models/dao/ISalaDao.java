@@ -1,11 +1,11 @@
 package com.parabellum.springboot.web.app.models.dao;
 
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.parabellum.springboot.web.app.models.entity.Sala;
 
-public interface ISalaDao extends CrudRepository<Sala,Long>{
+public interface ISalaDao extends PagingAndSortingRepository<Sala, Long>{
 	
 
 }

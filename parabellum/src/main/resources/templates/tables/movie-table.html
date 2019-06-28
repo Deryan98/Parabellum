@@ -3,44 +3,52 @@
 <head th:replace="layouts/admin-layout :: head"></head>
 <body>
 	<header th:replace="layouts/admin-layout :: header"></header>
-	<div class="container">
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
 
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<a th:href="@{/admin/movie-form}" class="btn btn-success btn-xs">Crear pelicula</a>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Duracion</th>
-					<th>Estreno</th>
-					<th>Genero</th>
-					<th>Formato</th>
-					<th>Idioma</th>
-					<th>Creación</th>
-					<th>Modificación</th>
-					<th>Estado</th>
-					<th>Editar</th>
-				</tr>
-			</thead>
-			<tbody>
+				<h4 class="card-title">
+					<a th:href="@{/admin/movie-form}" class="btn btn-success btn-xs">Crear
+						Pelicula</a>
+				</h4>
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Nombre</th>
+							<th>Duracion</th>
+							<th>Estreno</th>
+							<th>Genero</th>
+							<th>Formato</th>
+							<th>Idioma</th>
+							<th>Creación</th>
+							<th>Modificación</th>
+							<th>Estado</th>
+							<th>Editar</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<tr th:each="pelicula: ${peliculas}">
-					<td th:text="${pelicula.nombre}"></td>
-					<td th:text="${pelicula.duracion}"></td>
-					<td th:text="${pelicula.estreno}"></td>
-					<td th:text="${pelicula.genero}"></td>
-					<td th:text="${pelicula.formato}"></td>
-					<td th:text="${pelicula.idioma}"></td>
-					<td th:text="${pelicula.createAt}"></td>
-					<td th:text="${pelicula.modifiedAt}"></td>
-					<td th:text="${pelicula.estado} ? 'Activo' : 'Inactivo'" />		
-					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/movie-form/} + ${pelicula.idPelicula}" th:text="'editar'"></a></td>
-				</tr>
+						<tr th:each="pelicula: ${peliculas}">
+							<td th:text="${pelicula.nombre}"></td>
+							<td th:text="${pelicula.duracion}"></td>
+							<td th:text="${pelicula.estreno}"></td>
+							<td th:text="${pelicula.genero}"></td>
+							<td th:text="${pelicula.formato}"></td>
+							<td th:text="${pelicula.idioma}"></td>
+							<td th:text="${pelicula.createAt}"></td>
+							<td th:text="${pelicula.modifiedAt}"></td>
+							<td th:text="${pelicula.estado} ? 'Activo' : 'Inactivo'" />
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/admin/movie-form/} + ${pelicula.idPelicula}"
+								th:text="'editar'"></a></td>
+						</tr>
 
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="layouts/admin-layout :: footer"></footer>
 </body>
