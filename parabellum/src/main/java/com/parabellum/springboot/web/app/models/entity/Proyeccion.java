@@ -50,7 +50,7 @@ public class Proyeccion implements Serializable{
 	private Boolean estado;
 	
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_pelicula")
 	private Pelicula pelicula;
 	
@@ -63,7 +63,7 @@ public class Proyeccion implements Serializable{
 		this.createAt = createAt;
 	}
 	@NotNull
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="id_sala")
 	private Sala sala;
 	

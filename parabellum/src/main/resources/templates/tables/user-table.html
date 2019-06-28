@@ -39,7 +39,6 @@
 							<td th:text="${usuario.createAt}"></td>
 							<td th:text="${usuario.modifiedAt}"></td>
 							<td th:text="${usuario.estado} ? 'Activo' : 'Inactivo'" />
-							
 							<td><a class="btn btn-primary btn-xs"
 								th:href="@{/admin/user-form/} + ${usuario.idUsuario}"
 								th:text="'editar'"></a></td>

@@ -55,10 +55,10 @@ public class ProyeccionController {
 		return "forms/proyeccion-form";
 	}
 	
-	@RequestMapping(value="/proyeccion-form/", method=RequestMethod.POST)
+	@RequestMapping(value="/proyeccion-form", method=RequestMethod.POST)
 	public String guardar(
-			@RequestParam(name="idSala", required=false) Long idSala,
-			@RequestParam(name="idPelicula", required=false) Long idPelicula,  
+			@RequestParam(name="idSala", required=true) Long idSala,
+			@RequestParam(name="idPelicula", required=true) Long idPelicula,
 			@Valid Proyeccion proyeccion, BindingResult result, 
 			Model model, 
 			SessionStatus status,RedirectAttributes flash) {
@@ -66,7 +66,8 @@ public class ProyeccionController {
 			model.addAttribute("titulo", "Formulario de Pelicula");
 			return  "forms/proyeccion-form";
 		}
-		//System.out.println("ID DE LA PELICULA"+ pelicula.getIdPelicula());
+		System.out.println("Hola");
+		System.out.println("ID DE LA PELICULA"+ peliculaService.findOne(idPelicula).getIdPelicula());
 		String mensajeFlash = (proyeccion.getIdProyeccion() != null) ? "Proyección Editada con éxito!"
 				: "Proyección Creada con éxito!";
 		
