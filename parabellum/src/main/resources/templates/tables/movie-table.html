@@ -35,7 +35,7 @@
 					<td th:text="${pelicula.idioma}"></td>
 					<td th:text="${pelicula.createAt}"></td>
 					<td th:text="${pelicula.modifiedAt}"></td>
-					<td th:text="${pelicula.estado}"></td>		
+					<td th:text="${pelicula.estado} ? 'Activo' : 'Inactivo'" />		
 					<td><a class="btn btn-primary btn-xs" th:href="@{/admin/movie-form/} + ${pelicula.idPelicula}" th:text="'editar'"></a></td>
 				</tr>
 
