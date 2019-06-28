@@ -26,8 +26,8 @@
 			<tbody>
 
 				<tr th:each="proyeccion: ${proyecciones}">
-					<td th:text="${proyeccion.pelicula}"></td>
-					<td th:text="${proyeccion.sala}"></td>
+					<td th:text="${proyeccion.pelicula.nombre}"></td>
+					<td th:text="${proyeccion.sala.nombre}"></td>
 					<td th:text="${proyeccion.fechaInicio}"></td>
 					<td th:text="${proyeccion.fechaFin}"></td>
 					<td th:text="${proyeccion.costo}"></td>
