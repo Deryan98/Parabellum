@@ -52,6 +52,8 @@ public class Pelicula implements Serializable{
 	@NotNull
 	private boolean estado;
 	
+	@NotEmpty
+	private String imagen;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -99,10 +101,21 @@ public class Pelicula implements Serializable{
 	/*
 	 * Setters and Getters
 	 */
+	
 
 
 	public Long getIdPelicula() {
 		return idPelicula;
+	}
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 
@@ -189,8 +202,6 @@ public class Pelicula implements Serializable{
 	public void setProyecciones(List<Proyeccion> proyecciones) {
 		this.proyecciones = proyecciones;
 	}
-	
-	
 	
 	
 	public Date getModifiedAt() {
