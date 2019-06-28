@@ -15,7 +15,6 @@ import com.parabellum.springboot.web.app.models.entity.Pelicula;
 import com.parabellum.springboot.web.app.models.service.IPeliculaService;
 
 @Controller()
-
 public class MovieController {
 	
 	@Autowired
@@ -53,6 +52,30 @@ public class MovieController {
 		model.addAttribute("title",movieTitle );
 		model.addAttribute("header", indexTitle);
 		return "movie-info";
+	}
+	
+	@GetMapping("/select_entradas")
+	public String entradas(Model model) {
+		
+		return "reservas/select_entradas";
+	}
+	
+	@GetMapping("/select_butacas")
+	public String butacas(Model model) {
+		
+		return "reservas/select_butacas";
+	}
+	
+	@GetMapping("/info_pago")
+	public String infoPago(Model model) {
+		
+		return "reservas/informacion_pago";
+	}
+	
+	@GetMapping("/orden_compra")
+	public String ordenCompra(Model model) {
+		
+		return "reservas/orden_compra";
 	}
 	
 

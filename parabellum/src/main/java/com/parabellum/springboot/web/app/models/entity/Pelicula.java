@@ -34,6 +34,17 @@ public class Pelicula implements Serializable{
 	@NotEmpty
 	private String nombre;
 	
+	private String descripcion;
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	@NotEmpty
 	private String duracion;
 	

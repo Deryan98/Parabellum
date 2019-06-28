@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-image: url(&quot;500830.jpg&quot;);">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -17,14 +17,14 @@
             <div class="row text-center justify-content-center">
                 <div class="col">
                     <nav class="navbar navbar-light navbar-expand-lg text-center">
-                        <div class="container-fluid"><a class="navbar-brand" href="#">Parabellum</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                        <div class="container-fluid"><a class="navbar-brand" href="/">Parabellum</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                             <div class="collapse navbar-collapse"
                                 id="navcol-1">
                                 <ul class="nav navbar-nav text-left mx-auto">
-                                    <li class="nav-item" role="presentation"><a class="nav-link active" href="select_entradas.html">1. Seleccionar Entradas&nbsp;</a></li>
-                                    <li class="nav-item" role="presentation"><a class="nav-link" href="select_butacas.html">2. Seleccionar Butacas</a></li>
-                                    <li class="nav-item" role="presentation"><a class="nav-link" href="informacion_pago.html">3. Informacion de Pago</a></li>
-                                    <li class="nav-item" role="presentation"><a class="nav-link" href="orden_compra.html">4. Orden Completa</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/select_entradas}">1. Seleccionar Entradas&nbsp;</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/select_butacas}" >2. Seleccionar Butacas</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/info_pago}">3. Informacion de Pago</a></li>
+                                    <li class="nav-item" role="presentation"><a class="btn btn-primary btn-lg active" th:href="@{/orden_compra}">4. Orden Completa</a></li>
                                 </ul>
                             </div>
                         </div>

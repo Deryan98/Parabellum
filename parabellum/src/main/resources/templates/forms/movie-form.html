@@ -24,6 +24,15 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Descripción</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{descripcion}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Duracion</label>
 				<div class="col-sm-6">
 					<input type="text" th:field="*{duracion}" class="form-control"
